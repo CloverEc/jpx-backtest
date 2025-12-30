@@ -1,0 +1,16 @@
+[strategy]
+name = "ridge_ls_v1"
+
+# Portfolio construction
+top_k = 10                    # Number of long positions
+bottom_k = 10                 # Number of short positions
+min_k = 1                     # Minimum positions to trade
+
+# Capital & execution
+leverage = 3.3                # Leverage multiplier
+lot_size = 100                # Shares per lot (JPX standard)
+cost_bps = 2.0                # Transaction cost (basis points, 2.0 = 0.02%)
+
+# Market filters
+ban_long_markets = ["グロース", "スタンダード"]   # Markets to exclude from long
+ban_short_markets = ["グロース", "スタンダード"]  # Markets to exclude from short
