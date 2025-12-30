@@ -1,0 +1,87 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =========================
+# Virtual Environments
+# =========================
+.venv/
+venv/
+ENV/
+env/
+
+# =========================
+# Build / Distribution
+# =========================
+build/
+dist/
+wheelhouse/
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Runtime Outputs (IMPORTANT)
+# =========================
+# Backtest execution results
+runs/*
+!runs/.gitkeep
+
+# Temporary artifacts
+tmp/
+cache/
+
+# =========================
+# Data (Never commit)
+# =========================
+*.parquet
+*.csv
+*.h5
+*.feather
+
+# Allow example submissions only
+!examples/**/predictions.parquet
+!examples/**/strategy.toml
+
+# =========================
+# Secrets / Config
+# =========================
+.env
+.env.*
+*.key
+*.pem
+*.token
+
+# =========================
+# Coverage
+# =========================
+.coverage
+htmlcov/
+
