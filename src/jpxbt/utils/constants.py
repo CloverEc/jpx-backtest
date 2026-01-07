@@ -13,6 +13,14 @@ REQUIRED_PREDICTION_COLUMNS = [
     "MarketCodeName",
 ]
 
+# Optional columns in predictions.parquet
+OPTIONAL_PREDICTION_COLUMNS = [
+    "Shortable",  # bool: Whether the stock can be shorted (default: True if not present)
+]
+
+# Column name for shortable flag
+COL_SHORTABLE = "Shortable"
+
 # Trade sides
 SIDE_LONG = "LONG"
 SIDE_SHORT = "SHORT"

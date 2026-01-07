@@ -75,6 +75,17 @@ Required columns:
 | Close           | float     | Closing price                        |
 | MarketCodeName  | str       | Market category (e.g. "プライム")     |
 
+Optional columns:
+
+| Column          | Type      | Description                          |
+|-----------------|-----------|--------------------------------------|
+| Shortable       | bool      | Whether the stock can be shorted (default: True if not present) |
+
+**Note on Shortable column:**
+- If `Shortable = True` (or `1`): The stock is eligible for short positions
+- If `Shortable = False` (or `0`): The stock is excluded from short position candidates
+- If the column is not present: All stocks are treated as shortable (backward compatible)
+
 ### strategy.toml
 
 Example configuration:

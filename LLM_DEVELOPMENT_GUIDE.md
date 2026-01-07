@@ -95,10 +95,20 @@ jpx-backtest/
 | Close           | float     | Closing price                        |
 | MarketCodeName  | str       | Market category (e.g. "プライム")     |
 
+**Optional columns:**
+
+| Column          | Type      | Description                          |
+|-----------------|-----------|--------------------------------------|
+| Shortable       | bool      | Whether the stock can be shorted     |
+
 **Notes:**
 - Extra columns are ignored
 - Missing required columns → fail-fast error
 - NaN in Open/Close → skip that record with warning
+- **Shortable column behavior:**
+  - `True` or `1`: Stock is eligible for short positions
+  - `False` or `0`: Stock is excluded from short candidate selection
+  - Column not present: All stocks are treated as shortable (backward compatible)
 
 ---
 

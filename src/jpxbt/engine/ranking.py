@@ -5,7 +5,7 @@ from typing import List, Tuple
 import pandas as pd
 
 from ..io.schemas import StrategyConfig
-from ..utils.constants import SIDE_LONG, SIDE_SHORT
+from ..utils.constants import SIDE_LONG, SIDE_SHORT, COL_SHORTABLE
 
 
 def rank_and_select(
@@ -35,10 +35,19 @@ def rank_and_select(
         ~daily_data['MarketCodeName'].isin(strategy.ban_long_markets)
     ].copy()
 
-    # Filter for short positions (exclude banned markets)
+    # Filter for short positions (exclude banned markets and non-shortable stocks)
     short_candidates = daily_data[
         ~daily_data['MarketCodeName'].isin(strategy.ban_short_markets)
     ].copy()
+
+    # Apply Shortable filter if column exists
+    if COL_SHORTABLE in short_candidates.columns:
+        non_shortable_count = (~short_candidates[COL_SHORTABLE].astype(bool)).sum()
+        short_candidates = short_candidates[
+            short_candidates[COL_SHORTABLE].astype(bool)
+        ]
+        if non_shortable_count > 0:
+            print(f"  Filtered out {non_shortable_count} non-shortable stocks")
 
     # Rank and select long positions (highest predictions)
     long_positions = pd.DataFrame()
